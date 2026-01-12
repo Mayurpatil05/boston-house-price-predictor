@@ -57,10 +57,10 @@ The application follows a modular, production-style **ML inference architecture*
 
 ```mermaid
 graph LR
-    A[Web Browser (Client)] -->|HTTP POST /predict| B[Render Web Service]
-    B -->|Routes request| C[Docker Container]
-    C -->|Gunicorn| D[Flask Application]
-    D -->|Inference Request| E[Serialized ML Pipeline (.pkl)]
+    A[Web Browser Client] -->|HTTP POST| B[Render Web Service]
+    B -->|Routes Request| C[Docker Container]
+    C -->|Gunicorn WSGI| D[Flask Application]
+    D -->|Inference Request| E[Serialized ML Pipeline]
     E -->|Prediction Output| D
     D -->|JSON Response| A
 ```
